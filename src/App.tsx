@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import { useState, useEffect } from 'react';
+import { getMovieById } from './services/TMDBService.js';
+import selectedMovies from './data/featuredMovies.json';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [featuredMovies, setFeaturedMovies] = useState<TMDBMovie[] | null>(
+    null
+  );
+
+  useEffect(() => {
+    const fetchFeaturedMovies = async () => {
+      const selectedMoviesPromises = selectedMovies.map((selectedMovie) =>
+        getMovieById(selectedMovie.id)
+      );
+      return Promise.all(selectedMoviesPromises);
+    };
+    fetchFeaturedMovies().then((res) => setFeaturedMovies(res));
+  });
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Hello world!</h1>
+      <button onClick={() => console.log(featuredMovies)}>
+        Get movie details
+      </button>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
