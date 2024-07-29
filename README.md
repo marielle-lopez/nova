@@ -1,30 +1,18 @@
-# React + TypeScript + Vite
+# Nova
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Changelog
 
-Currently, two official plugins are available:
+### 29 July 2024
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Continued setting up service and client files for API calling
+- Researched into [TypeScript type declarations](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html)
+- Resolved "Could not find a declaration file for module" error using [this Stack Overflow answer](https://stackoverflow.com/a/76677938/19579561)
+- Resolved "Uncaught ReferenceError: process is not defined" error using [this Stack Overflow answer](https://stackoverflow.com/a/76047526/19579561)
+  - When using Vite, you should use `import.meta.env` instead of `process.env`
 
-## Expanding the ESLint configuration
+### 24 July 2024
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Set up Vite React + TypeScript project
+- Researched APIs for movie data
+- Began constructing service and client files for API calls
+- Started brainstorming UI design
