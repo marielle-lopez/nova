@@ -7,6 +7,7 @@
 - Worked on the `Carousel` component:
   - Spent some time styling the overlay to be positioned on top of the backdrop image
   - Now automatically switches to next featured movie (used the help of [this Stack Overflow answer](https://stackoverflow.com/a/53397029/19579561))
+- Constructed the `NavBar` component to allow a user to navigate between pages of the website, and added generic styling
 
 ### 29 July 2024
 

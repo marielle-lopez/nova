@@ -13,10 +13,10 @@ export const Carousel = ({
   title,
   description,
   previousMovie,
-  nextMovie,
+  nextMovie
 }: CarouselProps) => {
   return (
-    <>
+    <div className={styles.carousel__wrapper}>
       <img src={imagePath} className={styles.carousel__backdrop_img} />
       <div className={styles.carousel__overlay}>
         <button onClick={() => previousMovie()}>Previous</button>
@@ -26,6 +26,6 @@ export const Carousel = ({
         </div>
         <button onClick={() => nextMovie()}>Next</button>
       </div>
-    </>
+    </div>
   );
 };
