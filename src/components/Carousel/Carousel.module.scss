@@ -1,3 +1,22 @@
-.featured_img {
-  width: 100%;
+.carousel {
+  &__backdrop_img {
+    width: 100%;
+    z-index: 0;
+    object-fit: cover;
+  }
+
+  &__overlay {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    justify-content: space-between;
+    position: absolute;
+
+    &__details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
 }
