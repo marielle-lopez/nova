@@ -6,6 +6,7 @@ interface CarouselProps {
   nextMovie: () => void;
   title: string;
   description: string;
+  timer: NodeJS.Timeout;
 }
 
 export const Carousel = ({
@@ -14,9 +15,10 @@ export const Carousel = ({
   description,
   previousMovie,
   nextMovie,
+  timer,
 }: CarouselProps) => {
   return (
-    <>
+    <div className={styles.carousel__wrapper}>
       <img src={imagePath} className={styles.carousel__backdrop_img} />
       <div className={styles.carousel__overlay}>
         <button onClick={() => previousMovie()}>Previous</button>
@@ -26,6 +28,6 @@ export const Carousel = ({
         </div>
         <button onClick={() => nextMovie()}>Next</button>
       </div>
-    </>
+    </div>
   );
 };
