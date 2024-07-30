@@ -1,4 +1,3 @@
-import styles from './CarouselContainer.module.scss';
 import { useState, useEffect } from 'react';
 import { Carousel } from '../../components/Carousel/Carousel';
 
@@ -28,17 +27,15 @@ export const CarouselContainer = ({
     index === featuredMovies.length - 1 ? setIndex(0) : setIndex(index + 1);
   };
 
-  console.log(featuredMovies);
+  // console.log(featuredMovies);
 
   return (
-    <div className={styles.carousel_container}>
-      <Carousel
-        imagePath={`https://image.tmdb.org/t/p/original${featuredMovies[index].backdrop_path}`}
-        title={featuredMovies[index].title}
-        description={featuredMovies[index].overview}
-        previousMovie={previousMovie}
-        nextMovie={nextMovie}
-      />
-    </div>
+    <Carousel
+      imagePath={`https://image.tmdb.org/t/p/original${featuredMovies[index].backdrop_path}`}
+      title={featuredMovies[index].title}
+      description={featuredMovies[index].overview}
+      previousMovie={previousMovie}
+      nextMovie={nextMovie}
+    />
   );
 };
