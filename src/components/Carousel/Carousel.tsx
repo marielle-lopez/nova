@@ -6,7 +6,6 @@ interface CarouselProps {
   nextMovie: () => void;
   title: string;
   description: string;
-  timer: NodeJS.Timeout;
 }
 
 export const Carousel = ({
@@ -14,8 +13,7 @@ export const Carousel = ({
   title,
   description,
   previousMovie,
-  nextMovie,
-  timer,
+  nextMovie
 }: CarouselProps) => {
   return (
     <div className={styles.carousel__wrapper}>
