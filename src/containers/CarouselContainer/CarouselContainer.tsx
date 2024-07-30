@@ -1,33 +1,44 @@
 import styles from './CarouselContainer.module.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Carousel } from '../../components/Carousel/Carousel';
 
 interface CarouselContainerProps {
-  imagePaths: string[];
+  featuredMovies: TMDBMovie[];
 }
 
-export const CarouselContainer = ({ imagePaths }: CarouselContainerProps) => {
+export const CarouselContainer = ({
+  featuredMovies,
+}: CarouselContainerProps) => {
   const [index, setIndex] = useState<number>(0);
 
-  console.log(imagePaths);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      nextMovie();
+    }, 5000);
+    return () => {
+      clearInterval(timer);
+    };
+  }, [index]);
+
+  const previousMovie = () => {
+    index === 0 ? setIndex(featuredMovies.length - 1) : setIndex(index - 1);
+  };
+
+  const nextMovie = () => {
+    index === featuredMovies.length - 1 ? setIndex(0) : setIndex(index + 1);
+  };
+
+  console.log(featuredMovies);
 
   return (
-    <div className={styles.featured_img_container}>
-      <button
-        onClick={() =>
-          index === 0 ? setIndex(imagePaths.length - 1) : setIndex(index - 1)
-        }
-      >
-        Previous
-      </button>
-      <button
-        onClick={() =>
-          index === imagePaths.length - 1 ? setIndex(0) : setIndex(index + 1)
-        }
-      >
-        Next
-      </button>
-      <Carousel imagePath={imagePaths[index]} />
+    <div className={styles.carousel_container}>
+      <Carousel
+        imagePath={`https://image.tmdb.org/t/p/original${featuredMovies[index].backdrop_path}`}
+        title={featuredMovies[index].title}
+        description={featuredMovies[index].overview}
+        previousMovie={previousMovie}
+        nextMovie={nextMovie}
+      />
     </div>
   );
 };
