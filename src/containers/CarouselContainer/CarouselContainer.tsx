@@ -28,8 +28,6 @@ export const CarouselContainer = ({
     index === featuredMovies.length - 1 ? setIndex(0) : setIndex(index + 1);
   };
 
-  console.log(featuredMovies);
-
   return (
     <div className={styles.carousel_container}>
       <Carousel
