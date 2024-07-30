@@ -27,8 +27,6 @@ export const CarouselContainer = ({
     index === featuredMovies.length - 1 ? setIndex(0) : setIndex(index + 1);
   };
 
-  // console.log(featuredMovies);
-
   return (
     <Carousel
       imagePath={`https://image.tmdb.org/t/p/original${featuredMovies[index].backdrop_path}`}
