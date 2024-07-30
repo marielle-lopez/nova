@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getMovieById } from '../../services/TMDBService.js';
 import selectedMovies from '../../data/featuredMovies.json';
 import { CarouselContainer } from '../../containers/CarouselContainer/CarouselContainer.js';
+import { PageContainer } from '../../containers/PageContainer/PageContainer.js';
 
 export const HomePage = () => {
   const [featuredMovies, setFeaturedMovies] = useState<TMDBMovie[] | null>(
@@ -19,18 +20,11 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <div>
-      {featuredMovies && (
-        <CarouselContainer
-          imagePaths={featuredMovies?.map(
-            (featuredMovie) =>
-              `https://image.tmdb.org/t/p/original${featuredMovie.backdrop_path}`
-          )}
-        />
-      )}
+    <PageContainer>
+      {featuredMovies && <CarouselContainer featuredMovies={featuredMovies} />}
       <button onClick={() => console.log(featuredMovies)}>
         Get movie details
       </button>
-    </div>
+    </PageContainer>
   );
 };
